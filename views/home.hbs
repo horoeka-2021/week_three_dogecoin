@@ -1,1 +1,17 @@
 <h3>Test</h3>
+
+{{#each auctions}}
+<div>
+    <img src="{{photoUrl}}">
+    <div>
+        <span>{{name}}</span>
+        <p class="text-gray-500">{{description}}</p>
+    </div>
+    <div>
+        <span>Location</span>
+        <span>Time</span>
+        <span>{{currentPrice}}</span>
+        <span><a href="/auctions/{{id}}">View Auction</a></span>
+    </div>
+</div>
+{{/each}}
