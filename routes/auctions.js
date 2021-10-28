@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+
+const path = require('path');
 module.exports = router
 
 const db = require('../db/index')
@@ -78,7 +80,7 @@ router.get('/:id/bid', (req, res) => {
       if (user_does_not_exist) {
         return db.addUser
       } else {
-        return db.placebid
+        return db.placeBid
       }
     })
     .then(() => {
