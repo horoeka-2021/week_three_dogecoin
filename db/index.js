@@ -6,9 +6,9 @@ module.exports = {
   getAllAuctions,
   getAuctionById,
   placeBid,
-    increaseBid,
-    getUsers,
-    addUser
+  increaseBid,
+  getUsers,
+  addUser
 }
 
 function getAllAuctions (db = database) {
@@ -63,14 +63,14 @@ function increaseBid (updatedBid, db = database) {
     })
 }
 
-function getUsers(db = database) {
-    return ('users')
+function getUsers (db = database) {
+  return ('users')
     .select()
 }
 
-function addUser(newUser, db = database) {
-    return db('users')
-        .insert([
-        wallet_address = newUser.wallet_address
-    ])
+function addUser (newUser, db = database) {
+  return db('users')
+    .insert({
+      wallet_address: newUser.wallet_address
+    })
 }
