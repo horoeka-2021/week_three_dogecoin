@@ -9,7 +9,7 @@
 - `npm run dev`
   - view the app on `http://localhost:3000`
 
-# Modifying
+## Modifying
 
 - Make a new feature branch `git checkout -b [featureBranch name]`
 - Make your changes
