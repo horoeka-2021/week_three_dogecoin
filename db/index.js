@@ -5,4 +5,3 @@ const database = require('knex')(config)
 module.exports = {
 
 }
-

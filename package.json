@@ -1,5 +1,5 @@
 {
-  "name": "FiatCoin",
+  "name": "fiatCoin",
   "version": "0.1.0",
   "description": "NZ's premier fiat coin marketplace",
   "main": "index.js",
