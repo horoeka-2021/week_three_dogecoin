@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   db.getAllAuctions()
     .then(auctions => {
       // unsure about how to assign this (destructure? array[0] etc)
-      const viewData = auctions
+      // const viewData = auctions
 
       // res.render('home', viewData)
       res.render('home')
