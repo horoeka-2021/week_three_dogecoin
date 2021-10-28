@@ -4,25 +4,6 @@ const router = express.Router()
 const path = require('path');
 module.exports = router
 
-<<<<<<< HEAD
-
-
-
-// GET /auctions
-router.get('/', (req, res) => {
-    // db.getAllAuctions()
-    //   .then((auctions) => {
-    //     const viewData = {
-    //       auctions: auctions
-    //     }
-    //     res.render('showAuctions', viewData)
-    //     return null
-    //   })
-    //   .catch(err => logError(err, res))
-
-    res.render(path.join(__dirname, "../views/home.hbs"));
-  })
-=======
 const db = require('../db/index')
 
 // HOME PAGE EFFECTIVELY
@@ -114,4 +95,3 @@ router.get('/:id/bid', (req, res) => {
     })
     .catch(err => console.error(err))
 })
->>>>>>> main
