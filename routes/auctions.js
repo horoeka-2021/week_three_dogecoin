@@ -82,7 +82,7 @@ router.get('/:id/bid', (req, res) => {
       if (user_does_not_exist) {
         return db.addUser
       } else {
-        return db.placebid
+        return db.placeBid
       }
     })
     .then(() => {
