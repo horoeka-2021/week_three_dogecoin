@@ -2,6 +2,9 @@ const path = require('path')
 const express = require('express')
 const hbs = require('express-handlebars')
 
+const auctionRoutes = require('./routes/auctions')
+const bidRoutes = require('./routes/bids')
+
 // Create the server
 const server = express()
 module.exports = server
@@ -15,11 +18,9 @@ server.engine('hbs', hbs({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 
 // Define routes
-
-// const [directory] = require('./routes/[file].js')
-// server.use('/[directory]', [directory])
+server.use('/auctions', auctionRoutes)
+server.use('/bids', bidRoutes)
 
 server.get('/', (req, res) => {
-  const viewData = { }
-  res.render('home', viewData)
+  res.redirect('/auctions')
 })
