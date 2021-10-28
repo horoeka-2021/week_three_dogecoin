@@ -11,11 +11,8 @@ const db = require('../db/index')
 router.get('/', (req, res) => {
   db.getAllAuctions()
     .then(auctions => {
-      // unsure about how to assign this (destructure? array[0] etc)
-      const viewData = auctions
-
-      res.render('home', viewData)
-      //res.render('home')
+      console.log(auctions)
+      res.render('home', { auctions })
       return null
     })
     .catch(err => console.error(err))
@@ -26,13 +23,16 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
 
+  const viewData = {}
+
   db.getAuctionById(id)
     .then(auction => {
-      // unsure about data type etc
-      const viewData = auction
-
-      // res.render('auction', viewData)
-      res.render('auction')
+      viewData.auction = auction
+      return db.getBidsByAuction(id)
+    })
+    .then(bids => {
+      viewData.bids = bids
+      res.render('auction', viewData)
       return null
     })
     .catch(err => console.error(err))
@@ -43,18 +43,16 @@ router.get('/:id', (req, res) => {
 router.get('/:id/bid', (req, res) => {
   const id = Number(req.params.id)
 
-  // need to calculate if the person has already bid yet...
-  // check if senders doge address is the same?
+  const viewData = {}
 
-  // get bid data to set minimum bid limit
-  // re-use function from /:id or make a more specific one?
   db.getAuctionById(id)
     .then(auction => {
-    // unsure about data type etc
-      const viewData = auction
-
-      // res.render('bid', viewData)
-      res.render('bid')
+      viewData.auction = auction
+      return db.getBidsByAuction(id)
+    })
+    .then(bids => {
+      viewData.bids = bids
+      res.render('bid', viewData)
       return null
     })
     .catch(err => console.error(err))
@@ -91,7 +89,6 @@ router.get('/:id/bid', (req, res) => {
     })
     .then(() => {
       db.placeBid(bid)
-
     })
     .catch(err => console.error(err))
 })

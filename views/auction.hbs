@@ -1,0 +1,15 @@
+<h3>Test</h3>
+
+<div>
+    <span>{{auction.auctionName}}</span>
+    <span>{{auction.currentPrice}}</span>
+    <span>{{auction.description}}</span>
+    <span><img src="{{auction.photoUrl}}" alt="an awesome coin"></span>
+</div>
+
+<div>
+    {{#each bids}}
+    <span>{{bidAmount}}</span>
+    <span>{{walletAddress}}</span>
+    {{/each}}
+</div>

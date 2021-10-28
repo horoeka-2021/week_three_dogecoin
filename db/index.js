@@ -7,7 +7,8 @@ module.exports = {
   placeBid,
   increaseBid,
   getUsers,
-  addUser
+  addUser,
+  getBidsByAuction
 }
 
 function getAllAuctions (db = database) {
@@ -20,30 +21,26 @@ function getAllAuctions (db = database) {
 }
 
 function getAuctionById (id, db = database) {
-  return db('bids')
-    .join('bids', 'bids.auction_id', 'auctions.id')
-    .join('users', 'bids.user_id', 'users.id')
-    .where('bids.auction_id', id)
+  return db('auctions')
+    .where('id', id)
     .select('auctions.id as id',
       'auctions.name as auctionName',
       'auctions.current_price as currentPrice',
       'auctions.description as description',
-      'auctions.photo_url as photoUrl',
-      'users.id as userId',
-      'bids.amount as bidAmount',
-      'bids.id as bidId',
-      'bids.user',
-      'users.wallet_address as walletAddress',
-      'users.balance as userBalance'
-    )
+      'auctions.photo_url as photoUrl'
+  )
+    .first()
 }
 
 // Will need to get all existing bids related to auction to check if a bid is high enough
 
-// function getBidsByAuction(id, db = database) {
-//     return db('bids')
-//     .join('auctions', 'bids)
-// }
+function getBidsByAuction (id, db = database) {
+  return db('bids')
+    .join('users', 'bids.user_id', 'users.id')
+    .where('auction_id', id)
+    .select('bids.amount as bidAmount',
+      'users.wallet_address as walletAddress')
+}
 
 function placeBid (newBid, db = database) {
   return db('bids')
