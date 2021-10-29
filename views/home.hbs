@@ -1,8 +1,7 @@
 <section class="summary">
-
         {{#each auctions}}
         <div class="card">
-          <a href="/auctions/{{id}}"><img src="{{photoUrl}}" alt="{{description}}" style="width:100%"></a>
+          <img src="{{photoUrl}}" alt="{{description}}" style="width:100%">
           <div class="container">
               <h4><b>{{name}}</b></h4>
               <p>{{currentPrice}}</p>
@@ -10,5 +9,5 @@
           </div>
         </div>
         {{/each}}
-
+ 
 </section>
