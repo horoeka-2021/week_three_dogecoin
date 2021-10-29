@@ -8,7 +8,8 @@ module.exports = {
   increaseBid,
   getUsers,
   addUser,
-  getBidsByAuction
+  getBidsByAuction,
+  updateAuction
 }
 
 function getAllAuctions (db = database) {
@@ -28,7 +29,7 @@ function getAuctionById (id, db = database) {
       'auctions.current_price as currentPrice',
       'auctions.description as description',
       'auctions.photo_url as photoUrl'
-  )
+    )
     .first()
 }
 
@@ -38,9 +39,9 @@ function getBidsByAuction (id, db = database) {
   return db('bids')
     .join('users', 'bids.user_id', 'users.id')
     .where('auction_id', id)
-      .select('bids.id as bidId',
-          'bids.amount as bidAmount',
-          'users.wallet_address as walletAddress',
+    .select('bids.id as bidId',
+      'bids.amount as bidAmount',
+      'users.wallet_address as walletAddress',
       'users.id as userId')
 }
 
@@ -53,6 +54,14 @@ function placeBid (newBid, db = database) {
     })
 }
 
+function updateAuction (id, amount, db = database) {
+  return db('auctions')
+    .where('id', id)
+    .update({
+      current_price: amount
+    })
+}
+
 function increaseBid (updatedBid, db = database) {
   return db('bids')
     .where('id', updatedBid.bidId)
@@ -61,14 +70,3 @@ function increaseBid (updatedBid, db = database) {
     })
 }
 
-function getUsers (db = database) {
-  return ('users')
-    .select()
-}
-
-function addUser (newUser, db = database) {
-  return db('users')
-    .insert({
-      wallet_address: newUser.wallet_address
-    })
-}

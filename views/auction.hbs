@@ -1,18 +1,6 @@
 {{!-- <h3>Test</h3>
 
-<div>
-    <span>{{auction.auctionName}}</span>
-    <span>{{auction.currentPrice}}</span>
-    <span>{{auction.description}}</span>
-    <span><img src="{{auction.photoUrl}}" alt="an awesome coin"></span>
-</div>
 
-<div>
-    {{#each bids}}
-    <span>{{bidAmount}}</span>
-    <span>{{walletAddress}}</span>
-    {{/each}}
-</div> --}}
 
 {{!-- 
 <section class="summary">
@@ -30,13 +18,41 @@
 
 </section> --}}
 
-<section class="summary">
-	<div class="card">
-		<img src="img_avatar.png" alt="Avatar" style="width:100%" />
-		<div class="container">
+<section class="auction">
+	<div class="auction-details-card">
+		<img src="{{auction.photoUrl}}" alt="{{auction.photoUrl}}" />
+		<div class="card-container">
+
 			<h4><b>John Doe</b></h4>
-			<p>Architect & Engineer</p>
+			<p>Current Price: {{auction.currentPrice}}</p>
+			<p>{{auction.description}}</p>
+
+			<div class="bids">
+				{{#each bids}}
+					<p>{{bidAmount}}</p>
+					<p>{{walletAddress}}</p>
+				{{/each}}
+			</div>
+
 		</div>
+
 	</div>
 
 </section>
+<div>
+    <span>{{auction.auctionName}}</span>
+    <br>
+    <span>Current Price:{{auction.currentPrice}}</span>
+    <span>{{auction.description}}</span>
+    <span><img src="{{auction.photoUrl}}" alt="an awesome coin"></span>
+
+<a href="/auctions/{{auction.id}}/bid">Bid Here</a>
+</div>
+<div>
+    {{#each bids}}
+    <span>Amount: {{bidAmount}}</span>
+    <br>
+    <span>Address: {{walletAddress}}</span>
+    <br>
+    {{/each}}
+</div> 
