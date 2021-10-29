@@ -1,23 +1,28 @@
 <h2>add a bid</h2>
 
-<form method="POST" action="/location/{{id}}/bid" class="">
+<form method="POST" action="/auctions/{{id}}/bid" class="">
+<input type="hidden" name="bidId" value="{{bids.bidId}}">
+<input type="hidden" name="auctionId" value="{{auction.id}}">
+<input type="hidden" name="userId" value="{{userId}}">
   <label for="name" class="">
-    <span class="form-label">bid</span>
+    <span class="form-label">Bid</span>
     <input
       type="text"
       id="amount"
       name="amount"
-      placeholder="{{minBid}}"
+      placeholder="{{auction.currentPrice}}"
+      value="{{amount}}"
       class="form-input">
   </label>
 
   <label for="name" class="">
-    <span class="form-label">bid</span>
+    <span class="form-label">Address</span>
     <input
       type="text"
       id="address"
       name="address"
       placeholder=""
+      value="{{walletAddress}}"
       class="form-input">
   </label>
 
