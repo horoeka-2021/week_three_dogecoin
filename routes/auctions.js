@@ -53,12 +53,25 @@ router.post('/bid', (req, res) => {
   const bid = req.body
   console.log(bid)
 
-  db.placeBid(bid)
-    .then(bids => {
-      res.redirect('/')
-      return null
-  })
+  db.getAuctionById(bid.auctionId)
+    .then(auction => {
+      if (auction.currentPrice < bid.amount) {
+        return db.updateAuction(auction.id, bid.amount)
+          .then(auction => {
+            return db.placeBid(bid)
+          })
+          .then(bids => {
+            res.redirect(`/auctions/${auction.id}`)
+            return null
+          })
+          .catch(err => console.error(err))
+      } else {
+        res.redirect(`/auctions/${auction.id}`)
+        return null
+      }
+    })
     .catch(err => console.error(err))
+
   // TODO make this line work?
   // const newUser = req.body.user
 
@@ -69,7 +82,6 @@ router.post('/bid', (req, res) => {
 
   // check if user is a new user and if so add them to user database
   // first get all users to search through
-  
 })
 
 router.get('/:id', (req, res) => {
