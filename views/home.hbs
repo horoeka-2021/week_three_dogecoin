@@ -1,7 +1,7 @@
 <section class="summary">
         {{#each auctions}}
         <div class="card">
-          <img src="{{photoUrl}}" alt="{{description}}" style="width:100%">
+          <a href="/auctions/{{id}}"><img src="{{photoUrl}}" alt="{{description}}" style="width:100%"></a>
           <div class="container">
               <h4><b>{{name}}</b></h4>
               <p>{{currentPrice}}</p>
