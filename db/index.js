@@ -38,22 +38,24 @@ function getBidsByAuction (id, db = database) {
   return db('bids')
     .join('users', 'bids.user_id', 'users.id')
     .where('auction_id', id)
-    .select('bids.amount as bidAmount',
-      'users.wallet_address as walletAddress')
+      .select('bids.id as bidId',
+          'bids.amount as bidAmount',
+          'users.wallet_address as walletAddress',
+      'users.id as userId')
 }
 
 function placeBid (newBid, db = database) {
   return db('bids')
     .insert({
-      auction_id: newBid.auction_id,
-      user_id: newBid.user_id,
+      auction_id: newBid.auctionId,
+      user_id: newBid.userId,
       amount: newBid.amount
     })
 }
 
 function increaseBid (updatedBid, db = database) {
   return db('bids')
-    .where('id', updatedBid.id)
+    .where('id', updatedBid.bidId)
     .update({
       amount: updatedBid.amount
     })
