@@ -89,3 +89,43 @@ footer {
 
 
 
+.summary {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+.card {
+	display: flex;
+	width: calc(80% / 2);
+	margin: 3rem;
+	background-color: rgba(0, 0, 0, 0.3);
+	height: 20rem;
+	border-radius: 2rem;
+}
+
+.card > a {
+	min-width: 20rem;
+}
+
+.card > a > img {
+	max-width: 20rem;
+	min-height: auto;
+	max-height: 20rem;
+	border-top-left-radius: 2rem;
+	border-bottom-left-radius: 2rem;
+}
+
+.card > .card-container {
+	height: 20rem;
+	color:rgba(255, 255, 255, 0.9);
+	margin: 1.5rem 2rem;
+}
+
+.card-container > h4 {
+	font-size: 5rem;
+}
+
+.card-container > p {
+	font-size: 2rem;
+}
