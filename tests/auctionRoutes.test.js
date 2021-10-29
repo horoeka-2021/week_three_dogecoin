@@ -3,8 +3,8 @@ const server = require('../server')
 
 test ('/ GET returns correct response', (done) => {
   request(server)
-  .get('/auctions')
-  .expect(200)
+  .get('/')
+  .expect(302)
   .end((err, res) => {
     expect(err).toBeNull()
     done()
