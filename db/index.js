@@ -6,8 +6,6 @@ module.exports = {
   getAuctionById,
   placeBid,
   increaseBid,
-  getUsers,
-  addUser,
   getBidsByAuction,
   updateAuction
 }
