@@ -11,7 +11,7 @@ const db = require('../db/index')
 router.get('/', (req, res) => {
   db.getAllAuctions()
     .then(auctions => {
-      console.log('auctions: ', auctions)
+      // console.log('auctions: ', auctions)
       res.render('home', { auctions })
       return null
     })
@@ -38,7 +38,7 @@ router.get('/:id/bid', (req, res) => {
     .then(bids => {
       viewData.userId = bids[0].userId
       viewData.bids = bids
-      console.log('TCL: viewData.bids', viewData)
+      // console.log('TCL: viewData.bids', viewData)
       res.render('bid', viewData)
       return null
     })
@@ -51,7 +51,7 @@ router.post('/bid', (req, res) => {
 
   // get bid info from form
   const bid = req.body
-  console.log(bid)
+  // console.log(bid)
 
   db.placeBid(bid)
     .then(bids => {
@@ -84,7 +84,7 @@ router.get('/:id', (req, res) => {
     })
     .then(bids => {
       viewData.bids = bids
-      console.log(bids)
+      // console.log(bids)
       res.render('auction', viewData)
       return null
     })
