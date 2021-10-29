@@ -1,15 +1,15 @@
 const knex = require('knex')
-const config = require('../db/knexfile').test
+const config = require('./knexfile').test
 const testDb = knex(config)
 
-const db = require('../db/index')
+const db = require('./index')
 
 beforeAll(() => {
-  return testDb.migrate.latest()
+  return testDb.migrate.latest({ directory: './db/migrations' })
 })
 
 beforeEach(() => {
-  return testDb.seed.run()
+  return testDb.seed.run({ directory: './db/seeds' })
 })
 
 
