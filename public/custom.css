@@ -129,3 +129,46 @@ footer {
 .card-container > p {
 	font-size: 2rem;
 }
+
+.auction {
+	display: block;
+}
+
+.auction-details-card {
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 4rem 2rem;
+	position: relative;
+	
+}
+
+
+.auction-details-card > img {
+	min-width: auto;
+	max-width: 60%;
+	min-height: auto;
+	max-height: 50rem;
+	border-radius: 2rem;
+}
+
+.auction-details-card > .card-container {
+	height: 30rem;
+	color:rgba(255, 255, 255, 0.9);
+	margin: 2.5rem 3rem;
+	font-size: 3rem;
+}
+
+.auction-details-card > .card-container > .bids {
+
+	font-size: 3rem;
+}
+
+
+
+.auction-details-card > .card-container > p:first-of-type {
+	position:absolute;
+	right: 0;
+	top: 0;
+	margin: 2rem;
+
+}
