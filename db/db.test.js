@@ -51,35 +51,3 @@ test('Should create a new bid', () => {
       return null
     })
 })
-
-// test('Should increase a bid', () => {
-//     const newBid = {  }
-  
-//     return db.increaseBid(updateBid, testDb)
-//       const bid = 5
-//       .then(() => db.getBids(bid, testDb))
-//       .then(bids => {
-//         expect(bids).toHaveLength(4)
-//         return null
-//       })
-//   })
-
-// test('Should return the correct number of users', () => {
-//   return db.getUsers(testDb)
-//     .then(users => {
-//       expect(users).toHaveLength(3)
-//       return null
-//     })
-// })
-
-// test('Should create a new user', () => {
-//   const newUser = { id: 4, wallet_address: '12k3-asd-123', balance: 40000 }
-
-//   return db.addUser(newUser, testDb)
-//     .then(() => db.getUsers(testDb))
-//     .then(users => {
-//       expect(users).toHaveLength(4)
-//       expect(users[3]['wallet_address']).toMatch('afj4-dsa-lsk')
-//       return null
-//     })
-// })
