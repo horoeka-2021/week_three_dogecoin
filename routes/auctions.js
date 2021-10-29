@@ -11,7 +11,7 @@ const db = require('../db/index')
 router.get('/', (req, res) => {
   db.getAllAuctions()
     .then(auctions => {
-      console.log(auctions)
+      console.log('auctions: ', auctions)
       res.render('home', { auctions })
       return null
     })
@@ -45,6 +45,8 @@ router.get('/:id/bid', (req, res) => {
 
   const viewData = {}
 
+  // render bid page with min bid variable
+
   db.getAuctionById(id)
     .then(auction => {
       viewData.auction = auction
@@ -52,6 +54,7 @@ router.get('/:id/bid', (req, res) => {
     })
     .then(bids => {
       viewData.bids = bids
+			console.log('TCL: viewData.bids', viewData.bids)
       res.render('bid', viewData)
       return null
     })
