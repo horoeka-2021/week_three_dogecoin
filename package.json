@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index",
     "knex": "knex --knexfile ./db/knexfile.js",
-    "build": "NODE_ENV=production tailwindcss build public/source.css -o public/main.css",
+    "build": "NODE_ENV=production tailwindcss build public/source.css -o public/main.css knex migrate:latest",
     "build:dev": "tailwindcss build public/source.css -o public/main.css",
     "postinstall": "npm run build",
     "test": "jest"
@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.1",
     "knex": "^0.95.2",
+    "pg": "^8.7.1",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
